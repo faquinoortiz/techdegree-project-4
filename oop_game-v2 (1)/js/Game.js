@@ -27,24 +27,24 @@ startGame (){
     this.activePhrase.addPhraseToDisplay();
 }
 
+
 handleInteraction(letter){
-    const button = document.querySelector(`button.key:disabled[data-letter="${letter}"]`);
+   
+    const button = document.querySelector(`.key:contains(${letter})`);
+    button.disabled = true;
 
-    if(!button){
-      return;
-    }
-const isLetterInPhrase = this.activePhrase.checkLetter(letter);
+if (this.activePhrase.checkLetter(letter)){
 
-button.setAttribute('disabled', true);
-
-if (isLetterInPhrase){
-    this.activePhrase.showMatchedLetter(letter);
+button.classList.add('chosen');
+this.activePhrase.showMatchedLetter(letter);
 if (this.checkForWin()){
-    this.gameOver(true);
+    
+    this.gameOver(true)
 }
 
 } else {
-    this.removeLife();
+  button.classList.add('wrong');
+  this.removeLife();
     }
 }
 /**
@@ -63,9 +63,10 @@ checkForWin(){
 */
 
 removeLife(){
-    this.missed++ ;
+
     const hearts = document.querySelectorAll('.tries img');
-    hearts[this.missed - 1].src ='images/lostHeart.png';
+    hearts[this.missed ].src ='images/lostHeart.png';
+    this.missed++;
 if(this.missed === 5) {
    this.gameOver(false);
     }
