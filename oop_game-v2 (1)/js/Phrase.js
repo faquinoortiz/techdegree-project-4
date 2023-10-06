@@ -1,3 +1,4 @@
+//Constructor + class and setting all phrases lowerCase
 class Phrase {
     constructor(phrase) {
       this.phrase = phrase.toLowerCase();
