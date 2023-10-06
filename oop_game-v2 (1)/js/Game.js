@@ -15,7 +15,7 @@ class Game {
   
       this.activePhrase = null;
   
-      //F
+      
       this.lostHeartImage = new Image();
       this.lostHeartImage.src = 'images/lostHeart.png';
   
