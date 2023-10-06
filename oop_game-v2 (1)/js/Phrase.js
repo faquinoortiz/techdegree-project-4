@@ -1,39 +1,41 @@
 class Phrase {
-    constructor(phrase){
-    this.phrase = phrase.toLowerCase();
-}
-addPhraseToDisplay() {
-    const phraseDiv = document.getElementById('phrase');
-    const ul = phraseDiv.firstElementChild;
-    const phraseListItems = ul.children;
-
-    for (let i = 0; i < this.phrase.length; i++) {
-        const character = this.phrase[i];
-        const li = document.createElement ('li');
-        if (character ===' '){
-            li.className = 'hide space';
-            li.textContent = '_'
+    constructor(phrase) {
+      this.phrase = phrase.toLowerCase();
+    }
+  
+    addPhraseToDisplay() {
+      const phraseList = document.getElementById('phrase').firstElementChild;
+      phraseList.innerHTML = '';
+  
+      for (const character of this.phrase) {
+        const li = document.createElement('li');
+        if (character === ' ') {
+          li.className = 'space';
         } else {
-            li.className = `hide letter ${character}`;
-            li.textContent = '_';
-
+          li.className = `hide letter ${character}`;
+          li.textContent = character;
         }
-        ul.appendChild(li);
+        phraseList.appendChild(li);
+      }
+    }
+  /**
+* Checks if passed letter is in phrase
+* @param (string) letter - Letter to check
+*/
+
+    checkLetter(letter) {
+      return this.phrase.includes(letter);
+    }
+  /**
+* Displays passed letter on screen after a match is found
+* @param (string) letter - Letter to display
+*/
+    showMatchedLetter(letter) {
+      const matchedLetters = document.querySelectorAll(`.letter.${letter}`);
+      matchedLetters.forEach((element) => {
+        element.classList.remove('hide');
+        element.classList.add('show');
+      });
     }
   }
-
-  showMatchedLetter(letter){
-    const phraseDiv = document.getElementById('phrase');
-    const phraseListItems = phraseDiv.firstElementChild.children;
-
-    for (let i=0; i < phraseListItems.length; i++){
-        if (phraseListItems[i].textContent === letter){
-            phraseListItem[i].classList.remove('hide');
-            phraseListItem[i].classList.add('show');
-            phraseListItem[i].textContent = letter; 
-
-
-    }
-  }
-}
-}
+  
