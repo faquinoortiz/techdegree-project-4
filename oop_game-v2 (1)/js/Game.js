@@ -20,7 +20,7 @@ class Game {
       this.lostHeartImage.src = 'images/lostHeart.png';
   
       this.livesHeartImage = new Image();
-      this.livesHeartImage.src = 'images/livesHeart.png';
+      this.livesHeartImage.src = 'images/liveHeart.png';
     }
   // Function to run random phrase
     getRandomPhrase() {
@@ -106,7 +106,7 @@ class Game {
   
       const hearts = document.querySelectorAll('.tries img');
       hearts.forEach(heart => {
-        hearts.src = this.livesHeartImage.src;
+        heart.src = this.livesHeartImage.src;
       });
   
       const keys = document.querySelectorAll('.key');
